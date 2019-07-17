@@ -1,7 +1,5 @@
 FROM alpine
 
-#RUN apk --update add nginx php5-fpm
-
 RUN apk --update add nginx php7-fpm && \
     mkdir -p /run/nginx
 
