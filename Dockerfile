@@ -1,9 +1,14 @@
-FROM ubuntu:16.04
+FROM alpine:3.4
 
-ADD test /test
+RUN apk --update add nginx php7-fpm && \
+    mkdir -p /run/nginx
 
-COPY readme.md /tmp
+ADD www /www
+ADD nginx.conf /etc/nginx/
+ADD php-fpm.conf /etc/php5/php-fpm.conf
+ADD run.sh /run.sh
 
 ENV LISTEN_PORT=80
 
 EXPOSE 80
+CMD /run.sh
