@@ -1,11 +1,13 @@
-FROM alpine:3.4
+FROM alpine
+
+#RUN apk --update add nginx php5-fpm
 
 RUN apk --update add nginx php7-fpm && \
     mkdir -p /run/nginx
 
 ADD www /www
 ADD nginx.conf /etc/nginx/
-ADD php-fpm.conf /etc/php5/php-fpm.conf
+ADD php-fpm.conf /etc/php7/php-fpm.conf
 ADD run.sh /run.sh
 
 ENV LISTEN_PORT=80
